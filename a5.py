@@ -1,4 +1,5 @@
-import copy  # to make a deepcopy of the board
+import copy
+from operator import truediv  # to make a deepcopy of the board
 from typing import List, Any, Tuple
 
 # import Stack and Queue classes for BFS/DFS
@@ -106,7 +107,18 @@ class Board:
         Returns:
             a tuple of row, column index identifying the most constrained cell
         """
-        pass
+        mini = self.size
+        pos= (0,0)
+        for i in range(self.size):
+            for j in range(self.size):
+                #print(self.rows[i][j])
+                if isinstance(self.rows[i][j], list) and len(self.rows[i][j]) < mini:
+                    #print(self.rows[i][j])
+                    mini= len(self.rows[i][j])
+                    pos = (i,j)
+                    #print(mini)
+                    #print(pos)
+        return pos
 
     def failure_test(self) -> bool:
         """Check if we've failed to correctly fill out the puzzle. If we find a cell
@@ -116,7 +128,11 @@ class Board:
         Returns:
             True if we have failed to fill out the puzzle, False otherwise
         """
-        pass
+        for row in self.rows:
+            for cell in row:
+                if cell == []:
+                    return True
+        return False
 
     def goal_test(self) -> bool:
         """Check if we've completed the puzzle (if we've placed all the numbers).
@@ -125,7 +141,7 @@ class Board:
         Returns:
             True if we've placed all numbers, False otherwise
         """
-        pass
+        return self.num_nums_placed == self.size * self.size 
 
     def update(self, row: int, column: int, assignment: int) -> None:
         """Assigns the given value to the cell given by passed in row and column
@@ -139,8 +155,8 @@ class Board:
             column - index of the column to assign
             assignment - value to place at given row, column coordinate
         """
-        pass
-
+        self.rows[row][column] = assignment
+        
 
 def DFS(state: Board) -> Board:
     """Performs a depth first search. Takes a Board and attempts to assign values to
@@ -173,6 +189,11 @@ def BFS(state: Board) -> Board:
 
 
 if __name__ == "__main__":
+    b = Board()
+    print(b)
+    b.print_pretty()
+    b.update
+
     # uncomment the below lines once you've implemented the board class
    
     # # CODE BELOW HERE RUNS YOUR BFS/DFS
