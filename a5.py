@@ -1,5 +1,6 @@
 import copy
-from operator import truediv  # to make a deepcopy of the board
+from operator import truediv
+from os import remove  # to make a deepcopy of the board
 from typing import List, Any, Tuple
 
 # import Stack and Queue classes for BFS/DFS
@@ -156,6 +157,16 @@ class Board:
             assignment - value to place at given row, column coordinate
         """
         self.rows[row][column] = assignment
+        self.num_nums_placed +=1
+
+        for i in range(self.size):
+            remove_if_exists(self.rows[row][i], assignment)
+            remove_if_exists(self.rows[i][column], assignment)
+
+        #print(self.subgrid_coordinates(row,column))
+        for i, j in self.subgrid_coordinates(row,column):
+            #print(i,j)
+            remove_if_exists(self.rows[i][j], assignment)
         
 
 def DFS(state: Board) -> Board:
@@ -170,7 +181,27 @@ def DFS(state: Board) -> Board:
     Returns:
         either None in the case of invalid input or a solved board
     """
-    pass
+    #create a stack 
+    the_stack = Stack([state])
+    # print(the_stack)
+    # 1Add the initial state (root) to the <stack>
+    # 2Choose a node (curr) to examine from the <stack> (if there is nothing in <stack> - FAILURE)
+    while not the_stack.is_empty():
+        print(the_stack)
+        curr = the_stack.pop()
+        # print(curr)
+        if curr.goal_test():
+            return curr
+        elif not curr.failure_test():
+            row, col = curr.find_most_constrained_cell()
+            sel = curr.rows[row][col]
+            for el in sel:
+                cpy = copy.deepcopy(curr) 
+                cpy.update(row, col, el)
+                print(row, col, el)
+                the_stack.push(cpy)
+
+    return None
 
 
 def BFS(state: Board) -> Board:
