@@ -34,5 +34,5 @@ Like mentioned above, stacks and queues affected the order elements were popped 
 
 3. Considering the current implementation, how might the Sudoku solver be adapted or extended for larger puzzles or different types of grid-based logic games? How can the lessons learned from this assignment be applied to real-world problem-solving or optimization challenges?
 
-The sudoku solver could be adapted for larger puzzles by allowing the board to be bigger than 9. This can be done by implementing code that allows for the user to input the grid size number which is then put into a variable.
+The sudoku solver could be adapted for larger puzzles by allowing the board to be bigger than 9. This can be done by implementing code that allows for the user to input the grid size number which is then put into a variable. We can learn to create systems or methods that can help us solve problems more efficiently instead of spending a long time guessing and checking.
 
