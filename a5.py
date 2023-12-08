@@ -1,6 +1,7 @@
 import copy
 from operator import truediv
-from os import remove  # to make a deepcopy of the board
+from os import remove
+import queue  # to make a deepcopy of the board
 from typing import List, Any, Tuple
 
 # import Stack and Queue classes for BFS/DFS
@@ -219,7 +220,25 @@ def BFS(state: Board) -> Board:
     Returns:
         either None in the case of invalid input or a solved board
     """
-    while not this_empty():
+     #create a stack 
+    the_queue = queue([state])
+    count = 0
+    while not the_queue.is_empty():
+        curr = the_queue.pop()
+        count +=1
+        if curr.goal_test():
+            print(f"It took {count} iterations to solve")
+            return curr
+        elif not curr.failure_test():
+            row, col = curr.find_most_constrained_cell()
+            sel = curr.rows[row][col]
+            for el in sel:
+                cpy = copy.deepcopy(curr) 
+                cpy.update(row, col, el)
+                #print(row, col, el)
+                the_queue.push(cpy)
+
+    return None
 
 
 if __name__ == "__main__":
