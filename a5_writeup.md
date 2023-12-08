@@ -23,16 +23,16 @@ After completing the assignment, answer the following reflection questions:
 
 1. How do the performance and efficiency of the Depth-First Search (DFS) and Breadth-First Search (BFS) algorithms compare when solving Sudoku puzzles? In what scenarios might one approach be preferable over the other?
 
-Both DFS and BFS are similar. They each go through each scenarios to figure out what values can be implemented until they find one that works. The only difference between both is that DFS utilizes a stack that takes the last thing in the list out first while BFS uses queues that pop out the first thing in the list. Sometimes BFS can be more efficient.
+ Both DFS and BFS are similar. They each go through each scenarios to figure out what values can be implemented until they find one that works. The only difference between both is that DFS utilizes a stack that takes the last thing in the list out first while BFS uses queues that pop out the first thing in the list. Sometimes BFS can be more efficient.
 
 
 2. How did the choice of data structures (like the Stack for DFS and Queue for BFS) impact the implementation and functionality of the algorithms? Are there alternative data structures or design patterns that could have been used to achieve the same objectives?
 
-Like mentioned above, stacks and queues affected the order elements were popped out but did not affect the functionality. Deques could have been used. They can add or remove elements from either the beginning or end. This hybrid version could have combined both the DFS and BFS functions.
+  Like mentioned above, stacks and queues affected the order elements were popped out but did not affect the functionality. Deques could have been used. They can add or remove elements from either the beginning or end. This hybrid version could have combined both the DFS and BFS functions.
 
 
 
 3. Considering the current implementation, how might the Sudoku solver be adapted or extended for larger puzzles or different types of grid-based logic games? How can the lessons learned from this assignment be applied to real-world problem-solving or optimization challenges?
 
-The sudoku solver could be adapted for larger puzzles by allowing the board to be bigger than 9. This can be done by implementing code that allows for the user to input the grid size number which is then put into a variable. We can learn to create systems or methods that can help us solve problems more efficiently instead of spending a long time guessing and checking.
+ The sudoku solver could be adapted for larger puzzles by allowing the board to be bigger than 9. This can be done by implementing code that allows for the user to input the grid size number which is then put into a variable. We can learn to create systems or methods that can help us solve problems more efficiently instead of spending a long time guessing and checcking.
 
